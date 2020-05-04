@@ -1,4 +1,4 @@
-package my.clarence.learningkt
+package my.clarence.learningkt.basics
 
 fun main() {
     print("Hello World")

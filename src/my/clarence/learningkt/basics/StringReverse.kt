@@ -1,6 +1,14 @@
-package my.clarence.learningkt
+package my.clarence.learningkt.basics
 
 import kotlin.text.StringBuilder
+
+/**
+ * StringReverse
+ *
+ * Passes in a string to be reverse twice and reverses each word
+ * of the string after.
+ *
+ */
 
 fun main() {
 
@@ -21,8 +29,8 @@ fun main() {
 
     nRev1 = reverseStrBuiltIn(rev)
     nRev2 = reverseStrManual(rev)
-    nRev3 = reversePerWord(rev)
-    printAll(nRev1, nRev2)
+    nRev3 = reverseByWord(rev)
+    printAll(nRev1, nRev2, nRev3)
 }
 
 fun reverseStrBuiltIn(str: String?): String {
@@ -39,19 +47,21 @@ fun printAll(vararg revs: String) {
 
 fun reverseStrManual(str: String?): String {
     var sb = StringBuilder()
-    var letters = str!!.toCharArray()
-    var i = letters.size
-    var letr = str[0]
-    while (i > 0) {
-        sb.append(letters[i-1])
-        i--
+
+    for (i in str!!.length-1 downTo 0) {
+        sb.append(str[i])
     }
 
     return sb.toString()
 }
 
-fun reversePerWord(str: String?): String {
+fun reverseByWord(str: String?): String {
     var sb = StringBuilder()
     var words = str!!.split(" ")
-    return sb.toString()
+
+    for (word: String in words) {
+        sb.append(reverseStrBuiltIn(word) + " ")
+    }
+
+    return sb.toString().trim()
 }
